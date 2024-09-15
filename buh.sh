@@ -20,7 +20,7 @@ convert_image() {
     fi
 }
 
-    # Function to convert videos to Matroshka
+# Function to convert videos to Matroshka
 convert_video() {
     file="$1"
     base_name=$(basename "$file")
