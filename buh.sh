@@ -29,7 +29,7 @@ convert_video() {
     # Check if the file is a video
     if [[ -f "$file" ]] && [[ -r "$file" ]] && [[ "$file" =~ \.(mp4|mov|avi|mkv|flv|mpeg|mpg)$ ]]; then
         echo "Converting video to Matroshka: $file"
-        ffmpeg -i "$file" -c:v libaom -crf 23 -c:a aac -b:a 128k -movflags faststart -metadata title="My Video Title" -metadata artist="John Doe" "$new_file"
+        ffmpeg -i "$file" -c:v libaom-av1 -crf 23 -c:a aac -b:a 128k -movflags faststart -metadata title="My Video Title" -metadata artist="John Doe" "$new_file"
 
         echo "Moving original file to $new_file"
         mv "$file" "$new_file"
