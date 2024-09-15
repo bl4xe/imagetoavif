@@ -46,9 +46,13 @@ find "$source_dir" -type f -print0 | while IFS= read -r -d '' file; do
         if [[ "$file" =~ \.(jpg|jpeg|png|webp|gif|bmp|tiff)$ ]]; then
             echo "Converting image: $file"
             convert_image "$file"
-        else
+        elif [[ "$file" =~ \.(mp4|mkv|mov)$ ]]; then
             echo "Converting video: $file"
             convert_video "$file"
+        else
+            echo "Don't know this file type: $file"
+            echo "This script checks for jpg, jpeg, png, webp, gif, bmp, tiff for images"
+            echo "And mp4, mkv, mov for videos"
         fi
     fi
 done
