@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#most of this exists thans to some dude on the arch linux discord, his user is imafilfthykeyboardtoucher
+
 # Set the source and destination directories
 source_dir="/home/bl4ze/Downloads/Camera-Roll"
 dest_dir="/home/bl4ze/Downloads/zuh"
