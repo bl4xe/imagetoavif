@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#most of this exists thans to some dude on the arch linux discord, his user is imafilfthykeyboardtoucher
-
 # Set the source and destination directories
 source_dir="/home/bl4ze/Downloads/Camera-Roll"
 dest_dir="/home/bl4ze/Downloads/zuh"
@@ -15,7 +13,7 @@ convert_image() {
     # Check if the file is an image
     if [[ -f "$file" ]] && [[ -r "$file" ]] && [[ "$file" =~ \.(jpg|jpeg|png|webp|gif|bmp|tiff)$ ]]; then
         echo "Converting image to AVIF: $file"
-        magick convert "$file" -set EXIF:* c -define formats:write_exif=true -quality 100 -colorspace sRGB "$new_file"
+        magick "$file" -set EXIF:* c -define formats:write_exif=true -quality 100 -colorspace sRGB "$new_file"
 
         echo "Moving original file to $new_file"
         mv "$file" "$new_file"
@@ -31,7 +29,7 @@ convert_video() {
     # Check if the file is a video
     if [[ -f "$file" ]] && [[ -r "$file" ]] && [[ "$file" =~ \.(mp4|mov|avi|mkv|flv|mpeg|mpg)$ ]]; then
         echo "Converting video to Matroshka: $file"
-        ffmpeg -i "$file" -c:v libx264 -crf 23 -c:a aac -b:a 128k -movflags faststart -metadata title="My Video Title" -metadata artist="John Doe" "$new_file"
+        ffmpeg -i "$file" -c:v libaom -crf 23 -c:a aac -b:a 128k -movflags faststart -metadata title="My Video Title" -metadata artist="John Doe" "$new_file"
 
         echo "Moving original file to $new_file"
         mv "$file" "$new_file"
